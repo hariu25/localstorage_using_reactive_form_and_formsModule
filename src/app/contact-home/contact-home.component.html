@@ -1,0 +1,355 @@
+<!-- <nav class="navbar navbar-expand-lg" style="background-color: rgb(11, 86, 116)">
+  <div class="container-fluid" style="color: rgb(22, 98, 73)">
+    <div class="col-12 row">
+      <div class="col-6">
+        <h4>
+          <a class="navbar-brand" href="#" style="color: aliceblue"
+            >Contact Details</a
+          >
+        </h4>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="col-6 d-flex justify-content-end">
+        <form class="d-flex" role="search">
+
+          <button
+            class="btn btn-outline-success"
+            type="submit"
+            (click)="addContact()"
+          >
+            Add Contact
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+  </div>
+</nav> -->
+<!-- <div class="col-12 d-flex"> -->
+<!-- <div class="col-6">
+    <img src="assets\image.jpg" class="img-fluid" alt="..." />
+  </div>
+  <div class="col-6">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td colspan="2">Larry the Bird</td>
+          <td>twitter</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
+<!-- <router-outlet></router-outlet> -->
+
+<div></div>
+
+<div class="row">
+  <div class="col-md-5">
+    <div style="background-color: rgb(42, 165, 75);"><h5>Employee Details Entry Form</h5></div>
+
+    <div class="outerdiv">
+      <form #myForm="ngForm">
+        <div class="row">
+          <div class="col-md-4"><b>Name:</b></div>
+          <div class="col-md-4">
+            <input
+              type="text"
+              required
+              class="form-control"
+              [(ngModel)]="employeeObj.FirstName"
+              #fname="ngModel"
+              name="firstName"
+            />
+            <div *ngIf="fname.invalid && (fname.dirty || fname.touched)">
+              <span *ngIf="fname.errors?.['required']" class="text-danger">
+                First Name is Required</span
+              >
+            </div>
+          </div>
+          <div class="col-md-4">
+            <input
+              type="text"
+              required
+              class="form-control"
+              #lastname="ngModel"
+              name="lastname"
+              [(ngModel)]="employeeObj.LastName"
+            />
+            <div
+              *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
+            >
+              <span *ngIf="lastname.errors?.['required']" class="text-danger">
+                Last Name is Required</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-4"><b>Technology:</b></div>
+          <div class="col-md-8">
+            <input
+              type="text"
+              required
+              name="technology"
+              class="form-control"
+              [(ngModel)]="employeeObj.Technology"
+            />
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-4"><b>Designation:</b></div>
+          <div class="col-md-8">
+            <input
+              type="text"
+              required
+              name="designation"
+              class="form-control"
+              [(ngModel)]="employeeObj.Designation"
+            />
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-4"><b>Skill:</b></div>
+          <div class="col-md-6">
+            <select
+              class="form-control"
+              name="skills"
+              [value]="1"
+              [(ngModel)]="employeeObj.Skills"
+            >
+              <option disabled>Select</option>
+              <option>Angular</option>
+              <option>Java</option>
+              <option>SQL</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-4"><b>Core Expertise In</b></div>
+          <div class="col-md-8">
+            <input
+              type="text"
+              required
+              name="expertise"
+              class="form-control"
+              name="expertize"
+              [(ngModel)]="employeeObj.Expertise"
+            />
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-4"><b>Certifications if any </b></div>
+          <div class="col-md-4">
+            <input
+              type="radio"
+              name="certificateDetails"
+              value="Yes"
+              [(ngModel)]="employeeObj.CertificateDetails"
+              class="form-control"
+              class="ml-2"
+            />Yes
+          </div>
+          <div class="col-md-4">
+            <input
+              type="radio"
+              value="No"
+              name="certificateDetails"
+              [(ngModel)]="employeeObj.CertificateDetails"
+              class="form-control"
+              class="ml-2"
+            />No
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-4"></div>
+          <div class="col-md-8">
+            <input
+              type="text"
+              required
+              name="certification"
+              [disabled]="employeeObj.CertificateDetails === 'No'"
+              class="form-control"
+              name="certification"
+              [(ngModel)]="employeeObj.Certifications"
+            />
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-4"><b>Company</b></div>
+          <div class="col-md-8">
+            <input
+              type="text"
+              required
+              [(ngModel)]="employeeObj.Company"
+              class="form-control"
+              name="company"
+            />
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <div class="col-12"><b>Few Lines about Yourself</b></div>
+          <div class="col-md-12">
+            <textarea
+              rows="4"
+              [(ngModel)]="employeeObj.Comments"
+              class="form-control"
+              class="col-12"
+              name="comments"
+              id=""
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-md-8"></div>
+          <div class="col-md-4 text-end">
+            <button type="button" class="btn btn-danger btn-sm me-2">
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-success btn-sm"
+              (click)="addContact()"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-md-7">
+    <div style="background-color: rgb(124, 165, 42);"> <h5>Employee List</h5></div>
+
+    <div class="outerdiv">
+      <div class="row">
+        <div class="col-md-6"></div>
+
+        <div class="col-md-3">
+          <select class="form-control" name="sortBy" [(ngModel)]="sortBy">
+            <option value="0" disabled>Select</option>
+            <option>Name</option>
+            <option>Technology</option>
+            <option>Designation</option>
+            <option>Skill</option>
+            <option>Core Expertise</option>
+            <option>Company</option>
+            <option>Certificate</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <input
+            type="text"
+            class="form-control"
+            name="search"
+            (keyup.enter)="onSearch()"
+            [(ngModel)]="searchText"
+          />
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-12" >
+          <table class="table table-bordered" >
+            <thead style="background-color: blue">
+              <tr>
+                <th class="text-center">SI No</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Technology</th>
+                <th class="text-center">Designation</th>
+                <th class="text-center">Skill</th>
+                <th class="text-center">Core Expertise</th>
+                <th class="text-center">Certificate</th>
+                <th class="text-center">Company</th>
+                <th class="text-center">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <ng-container *ngIf="this.employeeArr.length !== 0">
+                <tr *ngFor="let data of this.employeeArr; let i = index">
+                  <td class="text-center">{{ i + 1 }}</td>
+                  <td class="text-center">
+                    {{ data.FirstName }} {{ data.LastName }}
+                  </td>
+                  <td class="text-center">{{ data.Technology }}</td>
+                  <td class="text-center">{{ data.Designation }}</td>
+                  <td class="text-center">{{ data.Skills }}</td>
+                  <td class="text-center">{{ data.Expertise }}</td>
+                  <td class="text-center">{{ data.CertificateDetails }}</td>
+                  <td class="text-center">{{ data.Company }}</td>
+                  <td class="text-center">
+                    <button>
+                      <i
+                        class="bi bi-pencil"
+                        (click)="onEdit(data)"
+                      ></i></button
+                    ><button (click)="deleteData(data)">
+                      <i class="bi bi-archive"></i>
+                    </button>
+                  </td>
+                </tr>
+              </ng-container>
+              <ng-container *ngIf="this.employeeArr.length === 0">
+                <tr>
+                  <td colspan="12" class="text-center">
+                    <div
+                      class="d-flex justify-content-center align-items-center"
+                      style="height: 200px"
+                    >
+                      <b>No Result</b>
+                    </div>
+                  </td>
+                </tr></ng-container
+              >
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- {{ myForm.value | json }} -->

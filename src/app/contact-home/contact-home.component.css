@@ -1,0 +1,14 @@
+.bg-body-tertiary{
+  background-color: rgb(126, 20, 20);
+}
+
+
+.outerdiv{
+  padding: 10px;
+  border: 1px solid red;
+}
+
+
+.table-bordered{
+border: 1px solid rgb(25, 37, 132);
+}
